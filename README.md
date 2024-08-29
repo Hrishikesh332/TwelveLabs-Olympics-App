@@ -40,7 +40,23 @@ The Olympics Video Clips Classification Application is a powerful tool designed 
 
 Try the Application Now -
 
-[![Olympics Clips Classification](https://img.shields.io/badge/Olympics Clips Classification_Launch_the_App-4CAF50?style=for-the-badge)](https://twelvelabs-olympics-app.streamlit.app/)
+<a href="https://twelvelabs-olympics-app.streamlit.app/" target="_blank" style="
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: background-color 0.3s, box-shadow 0.3s;
+">
+    Olympics Classification App
+</a>
+
 
 [![Watch the video](https://img.youtube.com/vi/9f2mScVn5ck/hqdefault.jpg)](https://youtu.be/9f2mScVn5ck)
 

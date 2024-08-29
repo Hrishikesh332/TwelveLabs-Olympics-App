@@ -36,9 +36,14 @@
 The Olympics Video Clips Classification Application is a powerful tool designed to categorize various Olympic sports using video clips. By leveraging Twelve Labs' Marengo 2.6 Embedding Model, this application provides accurate classification of Olympic sports based on visual content, conversation, and text in video.
 
 
-## Demonstration Video
+## Demonstration
 
-To Be Added...
+Try the Application Now -
+
+[![Olympics Clips Classification](https://img.shields.io/badge/Olympics Clips Classification_Launch_the_App-4CAF50?style=for-the-badge)](https://twelvelabs-olympics-app.streamlit.app/)
+
+[![Watch the video](https://img.youtube.com/vi/9f2mScVn5ck/hqdefault.jpg)](https://youtu.be/9f2mScVn5ck)
+
 
 ## Features
 

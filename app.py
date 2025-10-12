@@ -1,6 +1,6 @@
 import streamlit as st
 from twelvelabs import TwelveLabs
-from twelvelabs.models.search import SearchData, GroupByVideoSearchData
+from twelvelabs import SearchItem, SearchItemClipsItem, SearchResults
 import requests
 import os
 from dotenv import load_dotenv
@@ -88,9 +88,9 @@ def search_videos(selected_prompts, selected_class_names):
                               for cls in get_initial_classes() + get_custom_classes() 
                               if cls["name"] == class_name and prompt in cls["prompts"]), "Unknown")
             
-            result = client.search.query(
+            result = client.search.create(
                 index_id=INDEX_ID,
-                options=["visual", "audio"],
+                search_options=["visual", "audio"],
                 query_text=prompt,
                 group_by="video",
                 threshold="medium",
@@ -101,12 +101,12 @@ def search_videos(selected_prompts, selected_class_names):
             
             print(f"Search response for prompt '{prompt}':")
             print(f"  Total results: {result.page_info.total_results}")
-            print(f"  Index ID: {result.pool.index_id}")
-            print(f"  Total count in pool: {result.pool.total_count}")
+            print(f"  Index ID: {result.search_pool.index_id}")
+            print(f"  Total count in pool: {result.search_pool.total_count}")
             
             if result.data and len(result.data) > 0:
                 print(f"  First result type: {type(result.data[0])}")
-                if isinstance(result.data[0], GroupByVideoSearchData) and result.data[0].clips:
+                if isinstance(result.data[0], SearchItem) and result.data[0].clips:
                     clip = result.data[0].clips[0]
                     print(f"  Sample clip data: score={clip.score}, start={clip.start}, end={clip.end}")
                     print(f"  Confidence type: {type(clip.confidence)}")
@@ -295,7 +295,7 @@ def main():
                         for prompt_data in results_by_prompt.values():
                             result = prompt_data["result"]
                             for item in result.data:
-                                if isinstance(item, GroupByVideoSearchData):
+                                if isinstance(item, SearchItem):
                                     video_ids.add(item.id)
                                 else:
                                     video_ids.add(item.video_id)
@@ -328,7 +328,7 @@ def main():
                                     
                                     video_count = 0
                                     for item in result.data:
-                                        if isinstance(item, GroupByVideoSearchData):
+                                        if isinstance(item, SearchItem):
                                             video_id = item.id
                                             if not item.clips:
                                                 continue
